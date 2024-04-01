@@ -1,6 +1,6 @@
 # LeetCode Branch
 
-Welcome to [Your Name]'s LeetCode Branch!
+Welcome to LeetCode Branch!
 
 ## About
 This repository is dedicated to providing concise and effective solutions to coding challenges from LeetCode. Whether you're a beginner or an experienced coder, this resource aims to help you sharpen your skills and conquer complex problems with ease.
