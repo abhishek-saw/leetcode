@@ -1,13 +1,6 @@
 package LinkedList;
 
 public class AddTwoNumber {
-    public static class ListNode {
-        int val;
-        ListNode next;
-        ListNode(int val) {
-            this.val = val;
-        }
-    }
     public static void main(String[] args) {
         ListNode l1 = new ListNode(2);
         ListNode l11 = new ListNode(4);
