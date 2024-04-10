@@ -3,7 +3,7 @@ package Trees;
 import java.util.ArrayList;
 import java.util.List;
 
-public class InorderTraversal {
+public class InorderTraversalBT {
     public static void main(String[] args) {
         TreeNode root = new TreeNode(2);
         TreeNode rL = new TreeNode(1);
