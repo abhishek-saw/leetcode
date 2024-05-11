@@ -14,10 +14,10 @@ public class KthSmallestPrimeFraction {
     }
 
     private static int [] kthSmallestPrimeFraction(int[] arr, int k) {
-        PriorityQueue<Pair> pq = new PriorityQueue<>((a,b) ->arr[b.i]*arr[a.j]-(arr[a.i]*arr[b.j]));
+        PriorityQueue<Pairss<Number, Number>> pq = new PriorityQueue<>((a, b) ->arr[b.i]*arr[a.j]-(arr[a.i]*arr[b.j]));
         for(int i=0; i< arr.length - 1; i++){
             for(int j=i+1; j< arr.length; j++) {
-                pq.add(new Pair(i,j));
+                pq.add(new Pairss<>(i, j));
                 if(pq.size()>k){
                     pq.remove(pq.peek());
                 }
@@ -26,10 +26,10 @@ public class KthSmallestPrimeFraction {
         assert pq.peek() != null;
         return new int[]{arr[pq.peek().i],arr[pq.peek().j]};
     }
-    public static class Pair {
+    public static class Pairss<D extends Number, I extends Number> {
         int i;
         int j;
-        Pair(int i,int j){
+        Pairss(int i,int j){
             this.i = i;
             this.j = j;
         }
