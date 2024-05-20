@@ -39,7 +39,7 @@ public class SafestPathGrid {
             }
         }
 
-        // Multi-source BFS to calculate minimum distanceNearestThiefance to any thief
+        // Multi-source BFS to calculate minimum distanceNearestThief to any thief
         while (!queue.isEmpty()) {
             int[] cell = queue.poll();
             int r = cell[0], c = cell[1];
