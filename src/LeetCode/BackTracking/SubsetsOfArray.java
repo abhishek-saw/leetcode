@@ -13,9 +13,12 @@ public class SubsetsOfArray {
         System.out.println(subsetsBackTracking(nums3));
     }
     private static List<List<Integer>> subsetsBackTracking(int[] nums) {
-        List<List<Integer>> subset = new ArrayList<>();
-        allSubsets(nums,0,new ArrayList<>(),subset);
-        return subset;
+        List<List<Integer>> subset1 = new ArrayList<>();
+        allSubsetsBT(nums,0,new ArrayList<>(),subset1);
+        System.out.println(subset1);
+        List<List<Integer>> subset2 = new ArrayList<>();
+        allSubsets(nums,0,new ArrayList<>(),subset2);
+        return subset2;
     }
     public static void allSubsets(int[] nums, int index, List<Integer> currList, List<List<Integer>> subset){
         subset.add(new ArrayList<>(currList));
@@ -24,5 +27,15 @@ public class SubsetsOfArray {
             allSubsets(nums,i+1,currList,subset);
             currList.remove(currList.size()-1);
         }
+    }
+    public static void allSubsetsBT(int[] nums, int index, List<Integer> currList, List<List<Integer>> subset){
+        if(index==nums.length){
+            subset.add(new ArrayList<>(currList));
+            return;
+        }
+        currList.add(nums[index]);
+        allSubsets(nums,index+1,currList,subset);
+        currList.remove(currList.size()-1);
+        allSubsetsBT(nums,index+1,currList,subset);
     }
 }
