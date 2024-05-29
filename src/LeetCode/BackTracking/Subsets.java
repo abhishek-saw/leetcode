@@ -3,7 +3,7 @@ package BackTracking;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SubsetsOfArray {
+public class Subsets {
     public static void main(String[] args) {
         int[] nums1 = {1, 3};
         int[] nums2 = {5, 1, 6};
