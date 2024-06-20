@@ -52,7 +52,7 @@ public class LeetCode1482_MinimumNumberDaysMBouquets {
             }
             if (consecutiveCount == k) {
                 bouquetsCount++;
-                consecutiveCount=0;
+                consecutiveCount= 0;
             }
         }
         return bouquetsCount;
