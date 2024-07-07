@@ -1,7 +1,5 @@
 package LinkedList;
 
-import Xtra.MaxSlidingWindow;
-
 import java.util.Arrays;
 
 import static LinkedList.LeetCode61_RotateRight.print;
