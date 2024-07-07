@@ -2,7 +2,7 @@ package Array;
 
 import java.util.Arrays;
 
-public class LeeCode80_RemoveDuplicatesII {
+public class LeetCode80_RemoveDuplicatesII {
     public static void main(String[] args) {
         int[] nums1 = {1,1,1,2,2,3};
         System.out.println(Arrays.toString(nums1));
