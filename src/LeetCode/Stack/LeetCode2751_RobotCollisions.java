@@ -4,53 +4,67 @@ import java.util.*;
 
 public class LeetCode2751_RobotCollisions {
     public static void main(String[] args) {
-        String formula1 = "H2O";
-        String formula2 = "Mg(OH)2";
-        String formula3 = "K4(ON(SO3)2)2";
-        System.out.println(countOfAtoms(formula1));
-        System.out.println(countOfAtoms(formula2));
-        System.out.println(countOfAtoms(formula3));
+        int [] positions1 = {5,4,3,2,1};
+        int [] healths1 = {2,17,9,15,10};
+        String directions1 = "RRRRR";
+        int [] positions2 = {3,5,2,6};
+        int [] healths2 = {10,10,15,12};
+        String directions2 = "RLRL";
+        int [] positions3 = {1,2,5,6};
+        int [] healths3 = {10,10,11,11};
+        String directions3 = "RLRL";
+        System.out.println(survivedRobotsHealths(positions1,healths1,directions1));
+        System.out.println(survivedRobotsHealths(positions2,healths2,directions2));
+        System.out.println(survivedRobotsHealths(positions3,healths3,directions3));
     }
+    public static List<Integer> survivedRobotsHealths(int[] positions, int[] healths, String directions) {
+        int n = positions.length;
+        List<int[]> robots = new ArrayList<>();
 
-    private static String countOfAtoms(String formula) {
-        int len = formula.length();
-        Stack<Map<String,Integer>> stack = new Stack<>();
-        stack.push(new HashMap<>());
-        int i = 0;
-        while (i<len){
-            if(formula.charAt(i)=='('){
-                stack.push(new HashMap<>());
-                i++;
-            } else if (formula.charAt(i)==')') {
-                Map<String, Integer> top = stack.pop();
-                i++;
-                int start = i;
-                while (i < len && Character.isDigit(formula.charAt(i))) i++;
-                int multiplier = start < i ? Integer.parseInt(formula.substring(start, i)) : 1;
-                for (String key : top.keySet()) {
-                    stack.peek().put(key, stack.peek().getOrDefault(key, 0) + top.get(key) * multiplier);
+        for (int i = 0; i < n; ++i) {
+            robots.add(new int[]{positions[i], healths[i], directions.charAt(i), i});
+        }
+
+        robots.sort(Comparator.comparingInt(a -> a[0]));
+
+        Stack<int[]> stack = new Stack<>();
+
+        for (int[] robot : robots) {
+            if (robot[2] == 'R' || stack.isEmpty() || stack.peek()[2] == 'L') {
+                stack.push(robot);
+                continue;
+            }
+
+            if (robot[2] == 'L') {
+                boolean add = true;
+                while (!stack.isEmpty() && stack.peek()[2] == 'R' && add) {
+                    int last_health = stack.peek()[1];
+                    if (robot[1] > last_health) {
+                        stack.pop();
+                        robot[1] -= 1;
+                    } else if (robot[1] < last_health) {
+                        stack.peek()[1] -= 1;
+                        add = false;
+                    } else {
+                        stack.pop();
+                        add = false;
+                    }
                 }
-            } else {
-                int start = i;
-                i++;
-                while (i < len && Character.isLowerCase(formula.charAt(i))) i++;
-                String element = formula.substring(start, i);
-                start = i;
-                while (i < len && Character.isDigit(formula.charAt(i))) i++;
-                int count = start < i ? Integer.parseInt(formula.substring(start, i)) : 1;
-                stack.peek().put(element, stack.peek().getOrDefault(element, 0) + count);
+
+                if (add) {
+                    stack.push(robot);
+                }
             }
         }
 
-        Map<String, Integer> result = stack.pop();
-        List<String> elements = new ArrayList<>(result.keySet());
-        Collections.sort(elements);
-        StringBuilder sb = new StringBuilder();
-        for (String element : elements) {
-            sb.append(element);
-            int count = result.get(element);
-            if (count > 1) sb.append(count);
+        List<int[]> resultList = new ArrayList<>(stack);
+        resultList.sort(Comparator.comparingInt(a -> a[3]));
+
+        List<Integer> result = new ArrayList<>();
+        for (int[] robot : resultList) {
+            result.add(robot[1]);
         }
-        return sb.toString();
+
+        return result;
     }
 }
