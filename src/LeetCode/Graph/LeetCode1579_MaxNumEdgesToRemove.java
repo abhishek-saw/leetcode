@@ -8,7 +8,6 @@ public class LeetCode1579_MaxNumEdgesToRemove {
         int [][]edges2 = {{3,1,2},{3,2,3},{1,1,4},{2,1,4}};
         System.out.println(maxNumEdgesToRemove(n1,edges1));
         System.out.println(maxNumEdgesToRemove(n2,edges2));
-
     }
 
     private static int maxNumEdgesToRemove(int n, int[][] edges) {
@@ -17,8 +16,7 @@ public class LeetCode1579_MaxNumEdgesToRemove {
         int extra = 0;
         for (int[] e: edges) {
             if (e[0] != 3) continue;
-            boolean ext = false;
-            if (!a.add(e)) ext = true;
+            boolean ext = !a.add(e);
             if (!b.add(e)) ext = true;
             if (ext) extra++;
         }
@@ -30,33 +28,3 @@ public class LeetCode1579_MaxNumEdgesToRemove {
     }
 }
 
-class UF {
-    int[] nodes;
-    int edjCnt = 0;
-    UF(int n) {
-        nodes = new int[n];
-        for(int i = 0; i < n; i++)
-            nodes[i] = i;
-    }
-
-    boolean isConnected() {
-        return (nodes.length - 1 - 1) == edjCnt;
-    }
-
-    boolean add(int[] edj) {
-        int aHead = head(edj[1]);
-        int bHead = head(edj[2]);
-        if (aHead != bHead) {
-            nodes[bHead] = aHead;
-            edjCnt++;
-            return true;
-        }
-        return false;
-    }
-
-    int head(int n) {
-        if (n != nodes[n])
-            nodes[n] = head(nodes[n]);
-        return nodes[n];
-    }
-}
