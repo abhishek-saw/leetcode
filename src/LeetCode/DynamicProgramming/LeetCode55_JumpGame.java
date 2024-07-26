@@ -29,12 +29,10 @@ public class LeetCode55_JumpGame {
         }
         return dp[nums.length-1];
     }
-
     private static boolean canJumpMemo(int[] nums) {
         boolean [] dp = new boolean[nums.length+1];
         return helper(nums,nums.length,0,dp);
     }
-
     private static boolean helper(int[] nums, int n, int index, boolean[] dp) {
         if(index>=n-1){
             return true;
@@ -50,8 +48,6 @@ public class LeetCode55_JumpGame {
         }
         return false;
     }
-
-
     private static boolean canJump(int[] nums) {
         int maxIndex = 0;
         for(int i =0;i<nums.length;i++){
