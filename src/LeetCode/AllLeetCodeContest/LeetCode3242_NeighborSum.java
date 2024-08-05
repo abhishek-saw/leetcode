@@ -1,6 +1,6 @@
 package AllLeetCodeContest;
 
-public class LeetCode_Q1 {
+public class LeetCode3242_NeighborSum {
     public static void main(String[] args) {
         int[][] grid = {{0, 1, 2},{3, 4, 5},{6, 7, 8}};
         neighborSum obj = new neighborSum(grid);
