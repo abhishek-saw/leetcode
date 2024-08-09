@@ -8,11 +8,11 @@ public class LeetCode840_NumMagicSquaresInside {
         int[][] grid4 = {{7,0,5},{2,4,6},{3,8,1}};
         int[][] grid5 = {{5,5,5},{5,5,5},{5,5,5}};
         int[][] grid6 = {{3,10,2,3,4},{4,5,6,8,1},{8,8,1,6,8},{1,3,5,7,1},{9,4,9,2,9}};
-//        System.out.println(numMagicSquaresInside(grid1));
-//        System.out.println(numMagicSquaresInside(grid2));
-//        System.out.println(numMagicSquaresInside(grid3));
-//        System.out.println(numMagicSquaresInside(grid4));
-//        System.out.println(numMagicSquaresInside(grid5));
+        System.out.println(numMagicSquaresInside(grid1));
+        System.out.println(numMagicSquaresInside(grid2));
+        System.out.println(numMagicSquaresInside(grid3));
+        System.out.println(numMagicSquaresInside(grid4));
+        System.out.println(numMagicSquaresInside(grid5));
         System.out.println(numMagicSquaresInside(grid6));
     }
 
@@ -26,10 +26,7 @@ public class LeetCode840_NumMagicSquaresInside {
        
         for(int i =0;i<m-2;i++){
             for (int j =0;j<n-2;j++){
-                boolean flag = true;
-                if(grid[i][j]==grid[i][j+1]){
-                    flag = false;
-                }
+                boolean flag = grid[i][j] != grid[i][j + 1];
                 if(grid[i][j]<1|| grid[i][j]>9 ){
                     flag = false;
                 }
