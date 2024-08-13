@@ -7,14 +7,14 @@ import java.util.PriorityQueue;
 
 public class LeetCode703_KthLargestStream {
     public static void main(String[] args) {
-        PriorityQueue.LeetCode703_KthLargestStream.KthLargestHeap kthLargest = new PriorityQueue.LeetCode703_KthLargestStream.KthLargestHeap(3, new int[]{4, 5, 8, 2});
+        KthLargestHeap kthLargest = new KthLargestHeap(3, new int[]{4, 5, 8, 2});
         System.out.println(kthLargest.add(3));
         System.out.println(kthLargest.add(5));
         System.out.println(kthLargest.add(10));
         System.out.println(kthLargest.add(9));
         System.out.println(kthLargest.add(4));
         System.out.println();
-        PriorityQueue.LeetCode703_KthLargestStream.KthLargestPQ kthLargest1 = new PriorityQueue.LeetCode703_KthLargestStream.KthLargestPQ(3, new int[]{4, 5, 8, 2});
+        KthLargestPQ kthLargest1 = new KthLargestPQ(3, new int[]{4, 5, 8, 2});
         System.out.println(kthLargest1.add(3));
         System.out.println(kthLargest1.add(5));
         System.out.println(kthLargest1.add(10));
